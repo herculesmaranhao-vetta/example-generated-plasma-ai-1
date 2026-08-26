@@ -1,0 +1,38 @@
+# Navigation Interface — Pokedex
+# Defines routes and navigation structure for the Pokedex application
+
+Navigation:
+  routes:
+    - path: "/"
+      screen: "HomeScreen"
+      label: "Pokedex"
+      description: "Main listing page with Pokémon grid, search, and filters"
+
+    - path: "/pokemon/:id"
+      screen: "DetailScreen"
+      label: "Pokémon Details"
+      description: "Detailed information page for a specific Pokémon"
+      params:
+        - name: "id"
+          type: "number"
+          description: "Pokémon ID or name from the National Pokédex"
+
+  navigation:
+    - from: "HomeScreen"
+      action: "navigate"
+      target: "DetailScreen"
+      trigger: "card-click"
+      params:
+        id: "{pokemon.id}"
+
+    - from: "DetailScreen"
+      action: "navigate"
+      target: "HomeScreen"
+      trigger: "back-button-click"
+
+    - from: "DetailScreen"
+      action: "navigate"
+      target: "DetailScreen"
+      trigger: "evolution-click"
+      params:
+        id: "{evolution.id}"

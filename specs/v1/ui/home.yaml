@@ -1,0 +1,104 @@
+# Home Screen — Pokedex Listing
+# Route: /
+# Description: Main page with Pokémon grid, search, type filter, and pagination
+
+HomeScreen:
+  $type: Section
+  id: "pokedex-home"
+  description: "Main Pokedex listing page"
+
+  children:
+    - $type: Header
+      id: "home-header"
+      description: "Topbar with Pokedex logo and theme toggle"
+      children:
+        - $type: Icon
+          id: "logo-icon"
+          name: "pokedex-logo"
+        - $type: Button
+          id: "theme-toggle"
+          variant: GHOST
+          icon:
+            $type: Icon
+            name: "moon"
+
+    - $type: Toolbar
+      id: "home-toolbar"
+      description: "Search and filter controls"
+      children:
+        - $type: SearchInput
+          id: "search-input"
+          placeholder: "Search by name or ID..."
+        - $type: Select
+          id: "type-filter"
+          placeholder: "All types"
+          options:
+            - label: "All types"
+              value: ""
+            - label: "Fire"
+              value: "fire"
+            - label: "Water"
+              value: "water"
+            - label: "Grass"
+              value: "grass"
+            - label: "Electric"
+              value: "electric"
+            - label: "Psychic"
+              value: "psychic"
+            - label: "Ice"
+              value: "ice"
+            - label: "Dragon"
+              value: "dragon"
+            - label: "Dark"
+              value: "dark"
+            - label: "Fairy"
+              value: "fairy"
+            - label: "Normal"
+              value: "normal"
+            - label: "Fighting"
+              value: "fighting"
+            - label: "Flying"
+              value: "flying"
+            - label: "Poison"
+              value: "poison"
+            - label: "Ground"
+              value: "ground"
+            - label: "Rock"
+              value: "rock"
+            - label: "Bug"
+              value: "bug"
+            - label: "Ghost"
+              value: "ghost"
+            - label: "Steel"
+              value: "steel"
+
+    - $type: Section
+      id: "pokemon-grid-section"
+      description: "Responsive grid of Pokémon cards"
+      children:
+        - $type: Card
+          id: "pokemon-card-template"
+          description: "Template for each Pokémon card in the grid"
+          children:
+            - $type: Avatar
+              id: "pokemon-image"
+              src: "{pokemon.image}"
+            - $type: Tag
+              id: "pokemon-id"
+              label: "#{pokemon.id}"
+            - $type: Tag
+              id: "pokemon-type-badge"
+              label: "{pokemon.type}"
+
+    - $type: Button
+      id: "load-more-button"
+      label: "Load More"
+      variant: PRIMARY
+
+    - $type: Skeleton
+      id: "loading-skeleton"
+      description: "Shown while fetching Pokémon list"
+
+    - $type: EmptyState
+      id: "no-results-state"
+      description: "Shown when search/filter returns no Pokémon"

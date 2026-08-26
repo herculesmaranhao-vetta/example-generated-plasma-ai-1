@@ -1,0 +1,12 @@
+:root {
+  --color-primary: #0775be;
+  --color-primary-hover: #00539a;
+  --color-error: #e3000f;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --border-radius-none: 0;
+  --font-family: Roboto, 'Helvetica Neue', Arial, sans-serif;
+}

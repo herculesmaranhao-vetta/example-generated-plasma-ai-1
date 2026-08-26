@@ -1,0 +1,18 @@
+version: 2
+name: plan
+status: active
+updatedAt: "2026-08-26T00:00:00Z"
+executions:
+  - id: "01 - pokedex-ui"
+    number: 1
+    slug: pokedex-ui
+    title: "Pokedex UI"
+    status: completed
+    startedAt: "2026-08-26T00:00:00Z"
+    updatedAt: "2026-08-26T00:00:00Z"
+    workItemsTotal: 10
+    workItemsDone: 10
+    briefPath: plan/features/01 - pokedex-ui/brief.md
+    workItemsPath: plan/features/01 - pokedex-ui/work-items/
+    closedAt: "2026-08-26T00:00:00Z"
+notes: []

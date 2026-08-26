@@ -1,0 +1,83 @@
+# Detail Screen — Pokémon Information
+# Route: /pokemon/:id
+# Description: Shows detailed information about a specific Pokémon with tabs
+
+DetailScreen:
+  $type: Section
+  id: "pokedex-detail"
+  description: "Pokémon detail page"
+
+  children:
+    - $type: Button
+      id: "back-button"
+      label: "Back"
+      variant: GHOST
+      icon:
+        $type: Icon
+        name: "arrow-left"
+
+    - $type: Section
+      id: "hero-section"
+      description: "Hero area with dynamic background color based on primary type"
+      children:
+        - $type: Avatar
+          id: "pokemon-hero-image"
+          src: "{pokemon.image}"
+          shape: "rounded"
+        - $type: Tag
+          id: "pokemon-type-tag"
+          label: "{pokemon.type}"
+
+    - $type: Tabs
+      id: "detail-tabs"
+      description: "Tabbed information sections"
+      items:
+        - key: "about"
+          label: "About"
+          children:
+            - $type: Section
+              id: "about-section"
+              description: "Flavor text, height, weight, and abilities"
+        - key: "stats"
+          label: "Base Stats"
+          children:
+            - $type: Section
+              id: "stats-section"
+              description: "HP, Attack, Defense, Sp. Atk, Sp. Def, Speed with progress bars"
+              children:
+                - $type: Progress
+                  id: "stat-hp"
+                  label: "HP"
+                - $type: Progress
+                  id: "stat-attack"
+                  label: "Attack"
+                - $type: Progress
+                  id: "stat-defense"
+                  label: "Defense"
+                - $type: Progress
+                  id: "stat-sp-atk"
+                  label: "Sp. Atk"
+                - $type: Progress
+                  id: "stat-sp-def"
+                  label: "Sp. Def"
+                - $type: Progress
+                  id: "stat-speed"
+                  label: "Speed"
+        - key: "evolution"
+          label: "Evolution Chain"
+          children:
+            - $type: Section
+              id: "evolution-section"
+              description: "Visual evolution chain with clickable Pokémon cards"
+              children:
+                - $type: Card
+                  id: "evolution-card-template"
+                  description: "Template for each evolution stage card"
+
+    - $type: Skeleton
+      id: "detail-loading-skeleton"
+      description: "Shown while fetching Pokémon details"
+
+    - $type: EmptyState
+      id: "detail-error-state"
+      description: "Shown when Pokémon is not found or API fails"
