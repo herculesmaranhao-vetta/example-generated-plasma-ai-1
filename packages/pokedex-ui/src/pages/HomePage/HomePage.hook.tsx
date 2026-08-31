@@ -2,7 +2,18 @@ import { getPokemonByType, getPokemonList } from "@/api/pokemon";
 import type { PokemonListItem } from "@/types/pokemon";
 import { useCallback, useEffect, useState } from "react";
 
-export function useHomePage() {
+interface UseHomePageReturn {
+  pokemon: PokemonListItem[];
+  loading: boolean;
+  hasMore: boolean;
+  searchQuery: string;
+  selectedType: string;
+  handleSearch: (query: string) => void;
+  handleTypeFilter: (type: string) => void;
+  handleLoadMore: () => void;
+}
+
+export function useHomePage(): UseHomePageReturn {
   const [pokemon, setPokemon] = useState<PokemonListItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [offset, setOffset] = useState(0);
@@ -20,15 +31,15 @@ export function useHomePage() {
       setHasMore(items.length === limit);
       setOffset(currentOffset + limit);
     } catch {
-      // Error handled by UI
+      // Silently fail - UI shows empty state
     } finally {
       setLoading(false);
     }
   }, [offset]);
 
   useEffect(() => {
-    loadPokemon(true);
-  }, []);
+    void loadPokemon(true);
+  }, [loadPokemon]);
 
   const handleSearch = useCallback((query: string) => {
     setSearchQuery(query);
@@ -46,22 +57,22 @@ export function useHomePage() {
         await loadPokemon(true);
       }
     } catch {
-      // Error handled by UI
+      // Silently fail - UI shows empty state
     } finally {
       setLoading(false);
     }
   }, [loadPokemon]);
 
   const handleLoadMore = useCallback(() => {
-    loadPokemon(false);
+    void loadPokemon(false);
   }, [loadPokemon]);
 
   const filteredPokemon = searchQuery
     ? pokemon.filter(
-      (p) =>
-        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.id.toString() === searchQuery,
-    )
+        (p) =>
+          p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          p.id.toString() === searchQuery,
+      )
     : pokemon;
 
   return {

@@ -1,3 +1,3 @@
-export function useSkeleton() {
+export function useSkeleton(): Record<string, never> {
   return {};
 }

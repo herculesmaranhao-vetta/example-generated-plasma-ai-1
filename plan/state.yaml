@@ -15,4 +15,28 @@ executions:
     briefPath: plan/features/01 - pokedex-ui/brief.md
     workItemsPath: plan/features/01 - pokedex-ui/work-items/
     closedAt: "2026-08-26T00:00:00Z"
+  - id: "02 - pokedex-ui-token-fix"
+    number: 2
+    slug: pokedex-ui-token-fix
+    title: "Pokedex UI - Design Token Compliance Fix"
+    status: completed
+    startedAt: "2026-08-26T00:00:00Z"
+    updatedAt: "2026-08-26T00:00:00Z"
+    workItemsTotal: 5
+    workItemsDone: 5
+    briefPath: plan/features/02 - pokedex-ui-token-fix/brief.md
+    workItemsPath: plan/features/02 - pokedex-ui-token-fix/work-items/
+    closedAt: "2026-08-26T00:00:00Z"
+  - id: "03 - pokedex-ui-layout-fix"
+    number: 3
+    slug: pokedex-ui-layout-fix
+    title: "Pokedex UI - Layout & Component Fixes"
+    status: completed
+    startedAt: "2026-08-26T00:00:00Z"
+    updatedAt: "2026-08-26T00:00:00Z"
+    workItemsTotal: 7
+    workItemsDone: 7
+    briefPath: plan/features/03 - pokedex-ui-layout-fix/brief.md
+    workItemsPath: plan/features/03 - pokedex-ui-layout-fix/work-items/
+    closedAt: "2026-08-26T00:00:00Z"
 notes: []

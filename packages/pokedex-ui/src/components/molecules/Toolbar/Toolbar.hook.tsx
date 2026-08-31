@@ -1,3 +1,3 @@
-export function useToolbar() {
+export function useToolbar(): Record<string, never> {
   return {};
 }

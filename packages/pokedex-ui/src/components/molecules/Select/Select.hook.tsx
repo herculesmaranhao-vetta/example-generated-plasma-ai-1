@@ -1,3 +1,3 @@
-export function useSelect() {
+export function useSelect(): Record<string, never> {
   return {};
 }

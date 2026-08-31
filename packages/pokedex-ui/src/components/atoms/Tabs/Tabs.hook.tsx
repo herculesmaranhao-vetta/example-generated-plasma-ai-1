@@ -1,3 +1,3 @@
-export function useTabs() {
+export function useTabs(): Record<string, never> {
   return {};
 }

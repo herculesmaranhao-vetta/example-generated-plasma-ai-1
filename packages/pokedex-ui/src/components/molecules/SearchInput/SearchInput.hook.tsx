@@ -1,3 +1,3 @@
-export function useSearchInput() {
+export function useSearchInput(): Record<string, never> {
   return {};
 }

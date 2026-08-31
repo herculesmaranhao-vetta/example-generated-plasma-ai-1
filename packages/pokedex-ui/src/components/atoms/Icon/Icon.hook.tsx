@@ -1,3 +1,3 @@
-export function useIcon() {
+export function useIcon(): Record<string, never> {
   return {};
 }

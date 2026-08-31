@@ -1,3 +1,3 @@
-export function useHeader() {
+export function useHeader(): Record<string, never> {
   return {};
 }

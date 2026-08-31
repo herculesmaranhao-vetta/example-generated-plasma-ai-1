@@ -1,3 +1,3 @@
-export function useTag() {
+export function useTag(): Record<string, never> {
   return {};
 }

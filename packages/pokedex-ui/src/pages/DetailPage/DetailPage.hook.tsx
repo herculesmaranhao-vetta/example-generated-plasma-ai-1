@@ -1,9 +1,18 @@
+import { useState, useEffect, useCallback } from "react";
+import { useParams } from "react-router-dom";
 import { getPokemonById } from "@/api/pokemon";
 import type { PokemonDetail } from "@/types/pokemon";
-import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
-export function useDetailPage() {
+interface UseDetailPageReturn {
+  pokemon: PokemonDetail | null;
+  loading: boolean;
+  error: string | null;
+  activeTab: string;
+  handleTabChange: (key: string) => void;
+  pokemonId: string | undefined;
+}
+
+export function useDetailPage(): UseDetailPageReturn {
   const { id } = useParams<{ id: string }>();
   const [pokemon, setPokemon] = useState<PokemonDetail | null>(null);
   const [loading, setLoading] = useState(true);
@@ -18,14 +27,14 @@ export function useDetailPage() {
       const data = await getPokemonById(parseInt(id, 10));
       setPokemon(data);
     } catch {
-      setError("Pokémon not found");
+      setError("Pokemon not found");
     } finally {
       setLoading(false);
     }
   }, [id]);
 
   useEffect(() => {
-    loadPokemon();
+    void loadPokemon();
   }, [loadPokemon]);
 
   const handleTabChange = useCallback((key: string) => {

@@ -1,3 +1,3 @@
-export function useProgress() {
+export function useProgress(): Record<string, never> {
   return {};
 }

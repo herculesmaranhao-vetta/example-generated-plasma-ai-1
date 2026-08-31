@@ -1,3 +1,3 @@
-export function useSection() {
+export function useSection(): Record<string, never> {
   return {};
 }
